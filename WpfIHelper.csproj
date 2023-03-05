@@ -94,5 +94,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Fonts\" />
+    <Folder Include="Data\Img\" />
+    <Folder Include="Data\Style\" />
+    <Folder Include="Infrastructure\Commands\BaseCommand\" />
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\BaseViewModel\" />
+    <Folder Include="View\BaseView\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
