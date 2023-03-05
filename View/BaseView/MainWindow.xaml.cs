@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfIHelper
 {
@@ -23,6 +24,24 @@ namespace WpfIHelper
         public MainWindow()
         {
             InitializeComponent();
+            GetDate();
         }
+        #region Лого даты
+        /// <summary>
+        /// Получить дату
+        /// </summary>
+        private void GetDate()
+        {
+            DispatcherTimer LiveTime = new DispatcherTimer();
+            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Tick += timer_Tick;
+            LiveTime.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            LiveYear.Content = DateTime.Now.ToString("yyyy", new System.Globalization.CultureInfo("En-en"));
+            LiveDate.Content = DateTime.Now.ToString("ddd, ", new System.Globalization.CultureInfo("En-en")) + DateTime.Now.ToString("M", new System.Globalization.CultureInfo("En-en"));
+        }
+        #endregion
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         mc:Ignorable="d"
         x:Name="MainWindows"
         ResizeMode="CanResizeWithGrip"
@@ -12,5 +13,67 @@
         Height="832" 
         Width="1280">
     <Grid>
+        <Border Style="{StaticResource MainBorder}">
+            <DockPanel LastChildFill="True">
+                <Border DockPanel.Dock="Left" Style="{StaticResource BorderMenu}">
+                    <Grid  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="IHelper" Style="{StaticResource Logo}"/>
+                        <TreeView Grid.Row="1"  >
+                            <TreeViewItem  Header="Main" Margin="30 24 0 10" FontSize="14" FontWeight="Medium" Foreground="#8E8E8E" IsExpanded="True" >
+                                <TreeViewItem Header="Home" FontSize="16" FontWeight="Medium" Foreground="AliceBlue" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="To - do" Margin="30 0 0 10" FontSize="14" FontWeight="Medium" Foreground="#8E8E8E" IsExpanded="True">
+                                <TreeViewItem Header="Notes"  FontSize="16" FontWeight="Medium" Foreground="AliceBlue"/>
+                                <TreeViewItem Header="Calendar"  FontSize="16" FontWeight="Medium" Foreground="AliceBlue"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Other" Margin="30 0 0 10" FontSize="14" FontWeight="Medium" Foreground="#8E8E8E" IsExpanded="True">
+                                <TreeViewItem Header="Settings"  FontSize="16" FontWeight="Medium" Foreground="AliceBlue"/>
+                            </TreeViewItem>
+                        </TreeView>
+                    </Grid>
+                </Border>
+                <Border DockPanel.Dock="Top" Style="{StaticResource BorderTopBar}">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel DockPanel.Dock="Left" Style="{StaticResource StackPanelDate}" HorizontalAlignment="Center">
+                            <Label Name="LiveYear" Content="%TIME%" Style="{StaticResource CalenderLogo}"/>
+                            <Label Name="LiveDate" Content="%TIME%" Style="{StaticResource CalenderLogo}"/>
+                        </StackPanel>
+
+                        <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-60">
+                            <TextBox  Width="400"  VerticalAlignment="Center"  x:Name="SearchTermTextBox"  />
+                            <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" FontSize="14" FontWeight="Light"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#8E8E8E">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                        
+                        <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                <materialIcons:MaterialIcon Kind="VolumeOff" Width="25" Height="25" Foreground="#FF584F7B"/>
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                <materialIcons:MaterialIcon Kind="Tune" Width="25" Height="25" Foreground="#FF584F7B"/>
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignToolForegroundButton}" Margin="0 0 50 0">
+                                <materialIcons:MaterialIcon Kind="NightSky" Width="25" Height="25" Foreground="#FF584F7B"/>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+            </DockPanel>
+        </Border>
     </Grid>
 </Window>
