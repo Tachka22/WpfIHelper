@@ -102,5 +102,8 @@
     <Folder Include="Model\" />
     <Folder Include="ViewModel\BaseViewModel\" />
   </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="View\SplashScreen\SplashScreen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
